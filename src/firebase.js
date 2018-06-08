@@ -1,6 +1,7 @@
-import { intializeApp } from 'firebase';
+// import firebase from 'firebase'
+import { initializeApp } from 'firebase/firebase';
 
-const app = intializeApp({
+const app = initializeApp({
         apiKey: "AIzaSyC9MVUZ6oI3TgvxA_srFFsmBw9VqH0wvag",
         authDomain: "bookstore-30ab2.firebaseapp.com",
         databaseURL: "https://bookstore-30ab2.firebaseio.com",
