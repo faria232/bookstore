@@ -10,9 +10,9 @@
     <input type="text" v-model="book.title"/>
     <button @click="submitBook()">Add</button>
     <div>
-      <!-- <ul>
+      <ul>
         <li v-for="book of submitBook" v-bind:key="book['.key']">{{book.title}}</li>
-      </ul> -->
+      </ul>
     </div>
   </div>
   </div>
@@ -46,7 +46,8 @@ export default {
 
     methods:{
         submitBook(){
-            this.dbref.push ({title: this.title})
+            this.dbref.push ({title: this.title});
+            this.title = '';
         }
 
     }
