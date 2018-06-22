@@ -3,22 +3,28 @@
   <div>
     <h1>Booklist</h1>
     <p>Enter your books in the list</p>
-    <div class="row" v-for="book in books" :key="book.title">
+    <div class="row" v-for="book of books" :key="book.title">
         <div class="col-md-2"><img class="bookcover" :src="book.image"> </div>
         <div class="col-md-10"><h3>{{book.title}}</h3></div>
     </div>
-    <input type="text" v-model="books"/>
+    <input type="text" v-model="book.title"/>
     <button @click="submitBook()">Add</button>
+    <div>
+      <!-- <ul>
+        <li v-for="book of submitBook" v-bind:key="book['.key']">{{book.title}}</li>
+      </ul> -->
+    </div>
   </div>
   </div>
 </template>
 
 <script>
-import { bookRef } from './firebase';
+import { dbref } from './firebase';
 export default {
   name: 'app',
   data () {
-    return {
+      dbref: null
+      return {
     books: [
 
         {
@@ -36,10 +42,11 @@ export default {
     }
 
   },
+   
+
     methods:{
         submitBook(){
-            bookRef.push ({title: this.title, image: this.image, genre: this.genre})
-
+            this.dbref.push ({title: this.title})
         }
 
     }
